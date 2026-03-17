@@ -4,7 +4,7 @@
 }
 
 body {
-  background-color: rgb(238, 232, 225);
+  background-color: #e7dccf;
   display: flex;
   justify-content: center;
 }
@@ -15,8 +15,40 @@ main {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  padding: 5px;
+}
+
+button {
+  background-color: #ffffff80;
+  border: 2px solid transparent;
+  box-shadow: 0 0 3px #0003;
+  border-radius: 5px;
+  font-size: 1.5rem;
+  min-width: 2rem;
+  min-height: 2rem;
+}
+
+button:hover {
+  background-color: white;
+  border-color: #d9bb99;
 }
 
 .gallows__img {
-  max-height: 350px;
+  max-height: 320px;
+}
+
+.wordArea {
+  font-size: 1.5rem;
+}
+
+.letters {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.gameOver {
+  font-size: 1.2rem;
+  text-align: center;
 }

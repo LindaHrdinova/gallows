@@ -5,8 +5,6 @@ const gameOverElm = document.querySelector('.gameOver');
 const resetButtonElm = document.getElementById('gameOver__reset');
 const gameOverTextElm = document.querySelector('.gameOver__text');
 
-console.log('Hello world!');
-
 const words = [
   ['k', 'a', 'b', 'e', 'l'],
   ['k', 'u', 'k', 'l', 'a'],
@@ -26,11 +24,9 @@ let mistakes = 0;
 const randomedNumber = () => Math.floor(Math.random() * words.length);
 
 let guessedWord = words[randomedNumber()];
-console.log(guessedWord);
 let wordLength = guessedWord.length;
 let hiddenWord = guessedWord.map(() => '_');
 
-console.log('hidden word', hiddenWord);
 const showWord = (hiddenWord) => {
   let textToShow = '';
   hiddenWord.map(() => (textToShow += '_'));
@@ -40,13 +36,11 @@ const showWord = (hiddenWord) => {
 wordAreaElm.textContent = showWord(guessedWord);
 
 const resetGame = () => {
-  console.log('resetgame');
   mistakes = 0;
   imgElm.src = `gallows_img/gallows_${mistakes}.png`;
   gameOverElm.toggleAttribute('hidden');
   lettersButtonsElm.forEach((letter) => (letter.disabled = false));
   guessedWord = words[randomedNumber()];
-  console.log(guessedWord);
   wordAreaElm.textContent = showWord(guessedWord);
   wordLength = guessedWord.length;
   hiddenWord = guessedWord.map(() => '_');
@@ -54,7 +48,6 @@ const resetGame = () => {
 
 const gameFunction = (letter) => {
   letter.addEventListener('click', (e) => {
-    console.log(e.target.textContent);
     letter.disabled = true;
 
     mistakes += checkWord(
@@ -63,7 +56,6 @@ const gameFunction = (letter) => {
       hiddenWord,
     );
 
-    console.log();
     if (mistakes < 6) {
       imgElm.src = `gallows_img/gallows_${mistakes}.png`;
     }
@@ -90,7 +82,6 @@ const checkWord = (text, letter, hidden) => {
       letterFind += 1;
       wordLength -= 1;
       hidden[i] = letter;
-      console.log(hidden);
     }
   }
 

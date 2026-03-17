@@ -1,0 +1,22 @@
+* {
+  box-sizing: border-box;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+body {
+  background-color: rgb(238, 232, 225);
+  display: flex;
+  justify-content: center;
+}
+
+main {
+  max-width: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.gallows__img {
+  max-height: 350px;
+}

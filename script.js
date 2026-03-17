@@ -28,11 +28,12 @@ const randomedNumber = () => Math.floor(Math.random() * words.length);
 let guessedWord = words[randomedNumber()];
 console.log(guessedWord);
 let wordLength = guessedWord.length;
+let hiddenWord = guessedWord.map(() => '_');
 
-const showWord = (guessedWord) => {
+console.log('hidden word', hiddenWord);
+const showWord = (hiddenWord) => {
   let textToShow = '';
-  guessedWord.map(() => (textToShow += '_'));
-  console.log(textToShow);
+  hiddenWord.map(() => (textToShow += '_'));
   return textToShow;
 };
 
@@ -48,6 +49,7 @@ const resetGame = () => {
   console.log(guessedWord);
   wordAreaElm.textContent = showWord(guessedWord);
   wordLength = guessedWord.length;
+  hiddenWord = guessedWord.map(() => '_');
 };
 
 const gameFunction = (letter) => {
@@ -55,7 +57,11 @@ const gameFunction = (letter) => {
     console.log(e.target.textContent);
     letter.disabled = true;
 
-    mistakes += checkWord(guessedWord, e.target.textContent.toLowerCase());
+    mistakes += checkWord(
+      guessedWord,
+      e.target.textContent.toLowerCase(),
+      hiddenWord,
+    );
 
     console.log();
     if (mistakes < 6) {
@@ -76,16 +82,19 @@ const gameFunction = (letter) => {
   });
 };
 
-const checkWord = (text, letter) => {
+const checkWord = (text, letter, hidden) => {
   let letterFind = 0;
-
+  wordAreaElm.textContent = '';
   for (let i = 0; i < text.length; i++) {
     if (letter === text[i]) {
       letterFind += 1;
       wordLength -= 1;
+      hidden[i] = letter;
+      console.log(hidden);
     }
   }
 
+  for (let i = 0; i < text.length; i++) wordAreaElm.textContent += hidden[i];
   if (letterFind === 0) {
     return 1;
   } else {

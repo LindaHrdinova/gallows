@@ -41,7 +41,7 @@ wordAreaElm.textContent = showWord(guessedWord);
 const resetGame = () => {
   console.log('resetgame');
   mistakes = 0;
-  imgElm.src = `/gallows_img/gallows_${mistakes}.png`;
+  imgElm.src = `gallows_img/gallows_${mistakes}.png`;
   gameOverElm.toggleAttribute('hidden');
   lettersButtonsElm.forEach((letter) => (letter.disabled = false));
   guessedWord = words[randomedNumber()];
@@ -59,7 +59,7 @@ const gameFunction = (letter) => {
 
     console.log();
     if (mistakes < 6) {
-      imgElm.src = `/gallows_img/gallows_${mistakes}.png`;
+      imgElm.src = `gallows_img/gallows_${mistakes}.png`;
     }
 
     if (mistakes >= 6) {
